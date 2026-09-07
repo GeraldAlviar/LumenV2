@@ -1,0 +1,4 @@
+{
+  "status": "skipped",
+  "reason": "SKIPPED: this environment blocks browser navigation to localhost. Native HTTP/ES-module integration was not tested."
+}

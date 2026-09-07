@@ -1,0 +1,30 @@
+{
+  "checks": [
+    "Demo renders curves and blocks correction export",
+    "Demo JSON retains its simulated-data flag",
+    "Quality-passing data requires acknowledgement and all four exports produce files",
+    "JSON import validates files without replacing a good report on error",
+    "Pairing verifies the build before allowing a measurement",
+    "Four modes, Standard default, estimates and separated target groups are available",
+    "A camera alone is not ready: locking sample positions is required, not perfect alignment",
+    "Lock immediately enables Run with fixed sample positions, without passing exposure checks first",
+    "Zero-frame failure retries twice then shows a paused error on BOTH devices, keeping the square visible",
+    "Realign and Resume finish all Quick patches; both devices receive the full report",
+    "Reports show omitted measurements and downgrade unconfirmed exposure instead of claiming calibrated accuracy",
+    "Lock never checks exposure, but severely clipped capture at Run pauses with a specific explanation",
+    "Manual square lock remains available when automatic marker detection cannot confirm alignment",
+    "Stop cancels the loop, retains progress and synchronises the stopped state",
+    "Disconnect interrupts capture without deleting the checkpoints on either device",
+    "Reconnection requires revalidation and resumes the remaining patches successfully",
+    "Four taps register the actual sample geometry without requiring guide overlap",
+    "Recoverable warnings show a specific reason and Continue anyway on phone, with monitor in review state",
+    "Continue anyway finishes all patches without repeating the warning, records consent on both devices and blocks correction export",
+    "Diagnostic reports retain downloadable raw CSV and JSON with accepted warnings",
+    "Fresh verification is separate from calibration, compares held-out tones and preserves the original JSON baseline",
+    "Optional monitor setup reflects selected controls and provides a visual light/dark pattern with Close enough",
+    "Sustained large marker movement pauses capture and retains completed readings",
+    "Stop from the warning dialog cancels cleanly rather than leaving an unresolved review"
+  ],
+  "pageErrors": [],
+  "environment": "Chromium DOM only; synthetic camera acquisition; in-memory transport"
+}

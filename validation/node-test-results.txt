@@ -1,0 +1,704 @@
+
+> lumen-monitor-check@2.2.0 test
+> node --test tests/*.test.js
+
+TAP version 13
+# Subtest: sRGB transfer functions round-trip
+ok 1 - sRGB transfer functions round-trip
+  ---
+  duration_ms: 2.694881
+  type: 'test'
+  ...
+# Subtest: CIEDE2000 matches a standard reference pair
+ok 2 - CIEDE2000 matches a standard reference pair
+  ---
+  duration_ms: 0.474345
+  type: 'test'
+  ...
+# Subtest: dark patches use nearest higher reference
+ok 3 - dark patches use nearest higher reference
+  ---
+  duration_ms: 0.400183
+  type: 'test'
+  ...
+# Subtest: every run includes its reference ladder and flare readings
+ok 4 - every run includes its reference ladder and flare readings
+  ---
+  duration_ms: 1.153759
+  type: 'test'
+  ...
+# Subtest: greyscale sequence validates its step count
+ok 5 - greyscale sequence validates its step count
+  ---
+  duration_ms: 0.138158
+  type: 'test'
+  ...
+# Subtest: reference ladder refuses missing readings instead of inventing a scale
+ok 6 - reference ladder refuses missing readings instead of inventing a scale
+  ---
+  duration_ms: 0.626364
+  type: 'test'
+  ...
+# Subtest: flare fit uses measured linear anchor brightness, not encoded signal
+ok 7 - flare fit uses measured linear anchor brightness, not encoded signal
+  ---
+  duration_ms: 0.55771
+  type: 'test'
+  ...
+# Subtest: greyscale analysis requires actual black and full white
+ok 8 - greyscale analysis requires actual black and full white
+  ---
+  duration_ms: 0.577751
+  type: 'test'
+  ...
+# Subtest: duplicate grey levels are rejected
+ok 9 - duplicate grey levels are rejected
+  ---
+  duration_ms: 0.568106
+  type: 'test'
+  ...
+# Subtest: idealised synthetic camera exposure recovers approximate gamma
+ok 10 - idealised synthetic camera exposure recovers approximate gamma
+  ---
+  duration_ms: 1.454532
+  type: 'test'
+  ...
+# Subtest: insufficient midrange data does not fabricate target gamma
+ok 11 - insufficient midrange data does not fabricate target gamma
+  ---
+  duration_ms: 0.476237
+  type: 'test'
+  ...
+# Subtest: isotonic regression pools reversals in input order
+ok 12 - isotonic regression pools reversals in input order
+  ---
+  duration_ms: 1.125636
+  type: 'test'
+  ...
+# Subtest: correction LUT is bounded, monotonic, and endpoint-preserving
+ok 13 - correction LUT is bounded, monotonic, and endpoint-preserving
+  ---
+  duration_ms: 1.272107
+  type: 'test'
+  ...
+# Subtest: incomplete greyscale cannot produce a LUT
+ok 14 - incomplete greyscale cannot produce a LUT
+  ---
+  duration_ms: 0.278279
+  type: 'test'
+  ...
+# Subtest: quality gate accepts complete valid readings
+ok 15 - quality gate accepts complete valid readings
+  ---
+  duration_ms: 0.694166
+  type: 'test'
+  ...
+# Subtest: quality gate rejects clipping, missing readings, interruption and low reference
+ok 16 - quality gate rejects clipping, missing readings, interruption and low reference
+  ---
+  duration_ms: 0.699314
+  type: 'test'
+  ...
+# Subtest: contrast beyond camera floor is unresolved, not a certified lower bound
+ok 17 - contrast beyond camera floor is unresolved, not a certified lower bound
+  ---
+  duration_ms: 0.319422
+  type: 'test'
+  ...
+# Subtest: gain advice directions match final step signs (legacy helper)
+ok 18 - gain advice directions match final step signs (legacy helper)
+  ---
+  duration_ms: 0.234092
+  type: 'test'
+  ...
+# Subtest: ICC header, tag offsets, profile size and vcgt structure are valid
+ok 19 - ICC header, tag offsets, profile size and vcgt structure are valid
+  ---
+  duration_ms: 2.34169
+  type: 'test'
+  ...
+# Subtest: sRGB profile TRC stores the piecewise curve rather than gamma 2.2
+ok 20 - sRGB profile TRC stores the piecewise curve rather than gamma 2.2
+  ---
+  duration_ms: 2.079644
+  type: 'test'
+  ...
+# Subtest: exports reject unequal, nonfinite or nonmonotonic correction tables
+ok 21 - exports reject unequal, nonfinite or nonmonotonic correction tables
+  ---
+  duration_ms: 0.871924
+  type: 'test'
+  ...
+# Subtest: Argyll calibration has the requested rows and endpoints
+ok 22 - Argyll calibration has the requested rows and endpoints
+  ---
+  duration_ms: 1.036993
+  type: 'test'
+  ...
+# Subtest: CSV escapes quotes, commas and newlines and blocks formula labels
+ok 23 - CSV escapes quotes, commas and newlines and blocks formula labels
+  ---
+  duration_ms: 0.835339
+  type: 'test'
+  ...
+# Subtest: session round trip preserves raw data and simulation labels
+ok 24 - session round trip preserves raw data and simulation labels
+  ---
+  duration_ms: 2.043009
+  type: 'test'
+  ...
+# Subtest: session parser rejects malformed, oversized and unsupported data
+ok 25 - session parser rejects malformed, oversized and unsupported data
+  ---
+  duration_ms: 1.973614
+  type: 'test'
+  ...
+# Subtest: storage failure is nonfatal
+ok 26 - storage failure is nonfatal
+  ---
+  duration_ms: 0.317498
+  type: 'test'
+  ...
+# Subtest: peer validation refuses nonfinite and malformed measurements
+ok 27 - peer validation refuses nonfinite and malformed measurements
+  ---
+  duration_ms: 0.283637
+  type: 'test'
+  ...
+# Subtest: session identifiers work with or without randomUUID
+ok 28 - session identifiers work with or without randomUUID
+  ---
+  duration_ms: 0.168754
+  type: 'test'
+  ...
+# Subtest: blocked localStorage getters do not discard a measurement
+ok 29 - blocked localStorage getters do not discard a measurement
+  ---
+  duration_ms: 0.174353
+  type: 'test'
+  ...
+# Subtest: room codes have exact supported length and cryptographic generation
+ok 30 - room codes have exact supported length and cryptographic generation
+  ---
+  duration_ms: 4.373612
+  type: 'test'
+  ...
+# Subtest: missing PeerJS reports an actionable error
+ok 31 - missing PeerJS reports an actionable error
+  ---
+  duration_ms: 0.857943
+  type: 'test'
+  ...
+# Subtest: broker initialisation has a real timeout
+ok 32 - broker initialisation has a real timeout
+  ---
+  duration_ms: 16.187204
+  type: 'test'
+  ...
+# Subtest: host and join lifecycle completes
+ok 33 - host and join lifecycle completes
+  ---
+  duration_ms: 2.461579
+  type: 'test'
+  ...
+# Subtest: disconnected requests fail immediately without leaving waiters
+ok 34 - disconnected requests fail immediately without leaving waiters
+  ---
+  duration_ms: 0.206412
+  type: 'test'
+  ...
+# Subtest: request acknowledgement resolves and cleans up
+ok 35 - request acknowledgement resolves and cleans up
+  ---
+  duration_ms: 0.794407
+  type: 'test'
+  ...
+# Subtest: remote rendering errors reject the pending request
+ok 36 - remote rendering errors reject the pending request
+  ---
+  duration_ms: 0.676459
+  type: 'test'
+  ...
+# Subtest: connection loss promptly rejects all pending requests
+ok 37 - connection loss promptly rejects all pending requests
+  ---
+  duration_ms: 0.505962
+  type: 'test'
+  ...
+# Subtest: cancelled requests clean up and ignore late acknowledgements
+ok 38 - cancelled requests clean up and ignore late acknowledgements
+  ---
+  duration_ms: 0.734798
+  type: 'test'
+  ...
+# Subtest: malformed JSON and invalid messages cannot crash or reach the UI
+ok 39 - malformed JSON and invalid messages cannot crash or reach the UI
+  ---
+  duration_ms: 0.53758
+  type: 'test'
+  ...
+# Subtest: a second phone cannot replace the active connection
+ok 40 - a second phone cannot replace the active connection
+  ---
+  duration_ms: 0.286242
+  type: 'test'
+  ...
+# Subtest: old connection close events cannot break a newer connection
+ok 41 - old connection close events cannot break a newer connection
+  ---
+  duration_ms: 1.246829
+  type: 'test'
+  ...
+# Subtest: request timeouts remove waiters
+ok 42 - request timeouts remove waiters
+  ---
+  duration_ms: 15.450264
+  type: 'test'
+  ...
+# Subtest: destroy cancels connection setup and releases peer resources
+ok 43 - destroy cancels connection setup and releases peer resources
+  ---
+  duration_ms: 0.48422
+  type: 'test'
+  ...
+# Subtest: recoverable capture problems are warnings rather than geometric blockers
+ok 44 - recoverable capture problems are warnings rather than geometric blockers
+  ---
+  duration_ms: 2.009699
+  type: 'test'
+  ...
+# Subtest: severe clipping, no signal and malformed data cannot be overridden
+ok 45 - severe clipping, no signal and malformed data cannot be overridden
+  ---
+  duration_ms: 0.301153
+  type: 'test'
+  ...
+# Subtest: Continue anyway completes a noisy run with no repeated consent traps
+ok 46 - Continue anyway completes a noisy run with no repeated consent traps
+  ---
+  duration_ms: 59.597935
+  type: 'test'
+  ...
+# Subtest: Retry after a warning retries the same patch rather than duplicating it
+ok 47 - Retry after a warning retries the same patch rather than duplicating it
+  ---
+  duration_ms: 49.353081
+  type: 'test'
+  ...
+# Subtest: Continue from setup survives the measurement quality checks as a diagnostic policy
+ok 48 - Continue from setup survives the measurement quality checks as a diagnostic policy
+  ---
+  duration_ms: 39.829519
+  type: 'test'
+  ...
+# Subtest: diagnostic consent does not bypass severe clipping on later patches
+ok 49 - diagnostic consent does not bypass severe clipping on later patches
+  ---
+  duration_ms: 13.446094
+  type: 'test'
+  ...
+# Subtest: warning choice times out visibly and never strands the runner
+ok 50 - warning choice times out visibly and never strands the runner
+  ---
+  duration_ms: 68.527127
+  type: 'test'
+  ...
+# Subtest: Stop during a review aborts the review promise and retains prior readings
+ok 51 - Stop during a review aborts the review promise and retains prior readings
+  ---
+  duration_ms: 6.918156
+  type: 'test'
+  ...
+# Subtest: warnings and explicit consent survive JSON round trips and checkpoints
+ok 52 - warnings and explicit consent survive JSON round trips and checkpoints
+  ---
+  duration_ms: 1.947405
+  type: 'test'
+  ...
+# Subtest: warning count is bounded and deduplicated without silently undoing consent
+ok 53 - warning count is bounded and deduplicated without silently undoing consent
+  ---
+  duration_ms: 1.760643
+  type: 'test'
+  ...
+# Subtest: unknown camera lock metadata cannot enable correction exports
+ok 54 - unknown camera lock metadata cannot enable correction exports
+  ---
+  duration_ms: 2.025001
+  type: 'test'
+  ...
+# Subtest: all clean experimental export requirements are still honoured
+ok 55 - all clean experimental export requirements are still honoured
+  ---
+  duration_ms: 1.503676
+  type: 'test'
+  ...
+# Subtest: off-centre geometry is usable without matching the guide
+ok 56 - off-centre geometry is usable without matching the guide
+  ---
+  duration_ms: 0.64379
+  type: 'test'
+  ...
+# Subtest: small motion and momentary marker loss do not pause
+ok 57 - small motion and momentary marker loss do not pause
+  ---
+  duration_ms: 0.409858
+  type: 'test'
+  ...
+# Subtest: sustained substantial movement and long marker loss do pause
+ok 58 - sustained substantial movement and long marker loss do pause
+  ---
+  duration_ms: 0.281524
+  type: 'test'
+  ...
+# Subtest: every mode contains held-out tones, periodic references and no duplicate grey levels
+ok 59 - every mode contains held-out tones, periodic references and no duplicate grey levels
+  ---
+  duration_ms: 1.664418
+  type: 'test'
+  ...
+# Subtest: repeated-reference drift triggers a review rather than silent compensation
+ok 60 - repeated-reference drift triggers a review rather than silent compensation
+  ---
+  duration_ms: 46.891917
+  type: 'test'
+  ...
+# Subtest: reference drift detects ratio change, not arbitrary labels
+ok 61 - reference drift detects ratio change, not arbitrary labels
+  ---
+  duration_ms: 0.160442
+  type: 'test'
+  ...
+# Subtest: held-out validation measures actual values and does not report an assumed success
+ok 62 - held-out validation measures actual values and does not report an assumed success
+  ---
+  duration_ms: 2.923045
+  type: 'test'
+  ...
+# Subtest: verification comparisons with unlocked cameras are labelled low-confidence
+ok 63 - verification comparisons with unlocked cameras are labelled low-confidence
+  ---
+  duration_ms: 0.741578
+  type: 'test'
+  ...
+# Subtest: post-adjustment check is a new plan and never merges baseline readings
+ok 64 - post-adjustment check is a new plan and never merges baseline readings
+  ---
+  duration_ms: 27.346507
+  type: 'test'
+  ...
+# Subtest: demo, incomplete and missing verification baselines cannot masquerade as a real comparison
+ok 65 - demo, incomplete and missing verification baselines cannot masquerade as a real comparison
+  ---
+  duration_ms: 0.726976
+  type: 'test'
+  ...
+# Subtest: unsupported or poisoned comparison and warning metadata is rejected on import
+ok 66 - unsupported or poisoned comparison and warning metadata is rejected on import
+  ---
+  duration_ms: 0.807767
+  type: 'test'
+  ...
+# Subtest: older complete reports can open but old plans cannot resume across a release
+ok 67 - older complete reports can open but old plans cannot resume across a release
+  ---
+  duration_ms: 1.06147
+  type: 'test'
+  ...
+# Subtest: complete release verifies every exact runtime byte and then loads phone controller
+ok 68 - complete release verifies every exact runtime byte and then loads phone controller
+  ---
+  duration_ms: 14.592391
+  type: 'test'
+  ...
+# Subtest: missing JavaScript is named, controls remain inert and controller is not loaded
+ok 69 - missing JavaScript is named, controls remain inert and controller is not loaded
+  ---
+  duration_ms: 5.591376
+  type: 'test'
+  ...
+# Subtest: old controller bytes are rejected even when the HTML label is current
+ok 70 - old controller bytes are rejected even when the HTML label is current
+  ---
+  duration_ms: 5.143011
+  type: 'test'
+  ...
+# Subtest: missing manifest has actionable upload instructions
+ok 71 - missing manifest has actionable upload instructions
+  ---
+  duration_ms: 6.515189
+  type: 'test'
+  ...
+# Subtest: old manifest is rejected before loading controllers
+ok 72 - old manifest is rejected before loading controllers
+  ---
+  duration_ms: 5.29537
+  type: 'test'
+  ...
+# Subtest: old page cannot use new bootstrap silently
+ok 73 - old page cannot use new bootstrap silently
+  ---
+  duration_ms: 6.283504
+  type: 'test'
+  ...
+# Subtest: insecure page explains HTTPS instead of leaving a dead camera button
+ok 74 - insecure page explains HTTPS instead of leaving a dead camera button
+  ---
+  duration_ms: 6.169392
+  type: 'test'
+  ...
+# Subtest: PeerJS CDN error remains actionable and does not load the controller
+ok 75 - PeerJS CDN error remains actionable and does not load the controller
+  ---
+  duration_ms: 11.204415
+  type: 'test'
+  ...
+# Subtest: optional QR renderer failure still permits code-based monitor pairing
+ok 76 - optional QR renderer failure still permits code-based monitor pairing
+  ---
+  duration_ms: 6.320845
+  type: 'test'
+  ...
+# Subtest: homepage verifies release without requesting external libraries or controller
+ok 77 - homepage verifies release without requesting external libraries or controller
+  ---
+  duration_ms: 11.650473
+  type: 'test'
+  ...
+# Subtest: no camera frames rejects on a wall-clock deadline
+ok 78 - no camera frames rejects on a wall-clock deadline
+  ---
+  duration_ms: 32.838057
+  type: 'test'
+  ...
+# Subtest: one frame then a camera stall also rejects, rather than hanging
+ok 79 - one frame then a camera stall also rejects, rather than hanging
+  ---
+  duration_ms: 41.701956
+  type: 'test'
+  ...
+# Subtest: measurement stops immediately when cancelled during settling
+ok 80 - measurement stops immediately when cancelled during settling
+  ---
+  duration_ms: 0.742128
+  type: 'test'
+  ...
+# Subtest: stopping the camera rejects an in-flight measurement
+ok 81 - stopping the camera rejects an in-flight measurement
+  ---
+  duration_ms: 0.321785
+  type: 'test'
+  ...
+# Subtest: stable per-channel samples converge and release the collection lock
+ok 82 - stable per-channel samples converge and release the collection lock
+  ---
+  duration_ms: 4.793864
+  type: 'test'
+  ...
+# Subtest: channel oscillations are not hidden by stable aggregate luminance
+ok 83 - channel oscillations are not hidden by stable aggregate luminance
+  ---
+  duration_ms: 60.425492
+  type: 'test'
+  ...
+# Subtest: concurrent camera consumers are rejected
+ok 84 - concurrent camera consumers are rejected
+  ---
+  duration_ms: 0.711653
+  type: 'test'
+  ...
+# Subtest: modulation scan can be cancelled even before the first frame
+ok 85 - modulation scan can be cancelled even before the first frame
+  ---
+  duration_ms: 0.566574
+  type: 'test'
+  ...
+# Subtest: failed camera constraints do not claim successful locks
+ok 86 - failed camera constraints do not claim successful locks
+  ---
+  duration_ms: 1.270264
+  type: 'test'
+  ...
+# Subtest: silently ignored camera constraints also remain unconfirmed
+ok 87 - silently ignored camera constraints also remain unconfirmed
+  ---
+  duration_ms: 0.830522
+  type: 'test'
+  ...
+# Subtest: confirmed manual modes are recognised
+ok 88 - confirmed manual modes are recognised
+  ---
+  duration_ms: 0.455166
+  type: 'test'
+  ...
+# Subtest: uniformity refuses stale frames and unusable centre samples
+ok 89 - uniformity refuses stale frames and unusable centre samples
+  ---
+  duration_ms: 0.445952
+  type: 'test'
+  ...
+# Subtest: uniformity uses explicit screen bounds and produces 25 finite cells
+ok 90 - uniformity uses explicit screen bounds and produces 25 finite cells
+  ---
+  duration_ms: 1.801445
+  type: 'test'
+  ...
+# Subtest: all four modes have distinct plans, increasing coverage and bounded sample windows
+ok 91 - all four modes have distinct plans, increasing coverage and bounded sample windows
+  ---
+  duration_ms: 7.283786
+  type: 'test'
+  ...
+# Subtest: a complete quick run saves every valid patch before receiving its acknowledgement
+ok 92 - a complete quick run saves every valid patch before receiving its acknowledgement
+  ---
+  duration_ms: 57.088694
+  type: 'test'
+  ...
+# Subtest: zero-reading camera failure is sent as a visible paused state, not silent idle
+ok 93 - zero-reading camera failure is sent as a visible paused state, not silent idle
+  ---
+  duration_ms: 7.236625
+  type: 'test'
+  ...
+# Subtest: missing start acknowledgement times out and aborts the pending handshake
+ok 94 - missing start acknowledgement times out and aborts the pending handshake
+  ---
+  duration_ms: 35.428461
+  type: 'test'
+  ...
+# Subtest: missing camera frames trigger bounded automatic retries and a recoverable pause
+ok 95 - missing camera frames trigger bounded automatic retries and a recoverable pause
+  ---
+  duration_ms: 111.927737
+  type: 'test'
+  ...
+# Subtest: one transient measurement error retries only that patch, with no duplicate reading
+ok 96 - one transient measurement error retries only that patch, with no duplicate reading
+  ---
+  duration_ms: 43.012791
+  type: 'test'
+  ...
+# Subtest: clipped samples are rejected, never counted as completed measurements
+ok 97 - clipped samples are rejected, never counted as completed measurements
+  ---
+  duration_ms: 7.725132
+  type: 'test'
+  ...
+# Subtest: pausing aborts acquisition, prevents duplicate starts, and retains prior samples
+ok 98 - pausing aborts acquisition, prevents duplicate starts, and retains prior samples
+  ---
+  duration_ms: 0.980478
+  type: 'test'
+  ...
+# Subtest: a lost checkpoint acknowledgement preserves the valid reading for a safe resume
+ok 99 - a lost checkpoint acknowledgement preserves the valid reading for a safe resume
+  ---
+  duration_ms: 41.037474
+  type: 'test'
+  ...
+# Subtest: resuming a saved test begins at its first missing patch, not zero
+ok 100 - resuming a saved test begins at its first missing patch, not zero
+  ---
+  duration_ms: 33.710623
+  type: 'test'
+  ...
+# Subtest: altered, finished and mismatched test plans cannot be silently resumed
+ok 101 - altered, finished and mismatched test plans cannot be silently resumed
+  ---
+  duration_ms: 0.979236
+  type: 'test'
+  ...
+# Subtest: completion sync failure retains the finished session instead of losing results
+ok 102 - completion sync failure retains the finished session instead of losing results
+  ---
+  duration_ms: 35.880372
+  type: 'test'
+  ...
+# Subtest: unavailable diagnostics can be reported as omissions without inventing measurements
+ok 103 - unavailable diagnostics can be reported as omissions without inventing measurements
+  ---
+  duration_ms: 41.16055
+  type: 'test'
+  ...
+# Subtest: saved snapshots are detached from a running test
+ok 104 - saved snapshots are detached from a running test
+  ---
+  duration_ms: 0.386202
+  type: 'test'
+  ...
+# Subtest: version two sessions round-trip and version one reports still open
+ok 105 - version two sessions round-trip and version one reports still open
+  ---
+  duration_ms: 0.607155
+  type: 'test'
+  ...
+# Subtest: denied IndexedDB and localStorage become memory-only, not a blocked test
+ok 106 - denied IndexedDB and localStorage become memory-only, not a blocked test
+  ---
+  duration_ms: 0.551782
+  type: 'test'
+  ...
+# Subtest: localStorage fallback saves and recovers the exact last step
+ok 107 - localStorage fallback saves and recovers the exact last step
+  ---
+  duration_ms: 0.467094
+  type: 'test'
+  ...
+# Subtest: deadlines abort their task, and cancellation prevents work starting
+ok 108 - deadlines abort their task, and cancellation prevents work starting
+  ---
+  duration_ms: 4.965663
+  type: 'test'
+  ...
+# Subtest: square guide and square samples preserve geometry on portrait and landscape images
+ok 109 - square guide and square samples preserve geometry on portrait and landscape images
+  ---
+  duration_ms: 0.435566
+  type: 'test'
+  ...
+# Subtest: perspective projection maps all four corners exactly
+ok 110 - perspective projection maps all four corners exactly
+  ---
+  duration_ms: 0.114062
+  type: 'test'
+  ...
+# Subtest: marker detector finds four coloured corners but rejects an empty image
+ok 111 - marker detector finds four coloured corners but rejects an empty image
+  ---
+  duration_ms: 13.893809
+  type: 'test'
+  ...
+# Subtest: alignment advice allows a manual lock rather than claiming detection
+ok 112 - alignment advice allows a manual lock rather than claiming detection
+  ---
+  duration_ms: 0.342055
+  type: 'test'
+  ...
+# Subtest: motion guard respects permission denial and requires sustained movement
+ok 113 - motion guard respects permission denial and requires sustained movement
+  ---
+  duration_ms: 0.640354
+  type: 'test'
+  ...
+# Subtest: report quality does not pretend automatic exposure is a confirmed camera lock
+ok 114 - report quality does not pretend automatic exposure is a confirmed camera lock
+  ---
+  duration_ms: 0.818814
+  type: 'test'
+  ...
+# Subtest: render validation rejects invalid fields, anchors and session identifiers
+ok 115 - render validation rejects invalid fields, anchors and session identifiers
+  ---
+  duration_ms: 0.093541
+  type: 'test'
+  ...
+1..115
+# tests 115
+# suites 0
+# pass 115
+# fail 0
+# cancelled 0
+# skipped 0
+# todo 0
+# duration_ms 759.641241

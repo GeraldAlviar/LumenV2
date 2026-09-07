@@ -1,0 +1,30 @@
+{
+  "build": "2.2.0",
+  "node": {
+    "total": 115,
+    "passed": 115,
+    "failed": 0,
+    "includesBootstrapLogicTests": 10
+  },
+  "chromiumDOM": {
+    "passed": 24,
+    "failed": 0,
+    "camera": "synthetic",
+    "transport": "in-memory",
+    "loader": "test-adapted modules; not native HTTP ES module loading"
+  },
+  "icc": {
+    "passed": 3,
+    "method": "Pillow/LittleCMS parsing and transform construction; synthetic fixtures"
+  },
+  "release": {
+    "runtimeFiles": 29,
+    "hashAlgorithm": "SHA-256",
+    "allHashesMatch": true
+  },
+  "nativeHTTPModuleBrowserTest": "Skipped: ERR_BLOCKED_BY_ADMINISTRATOR",
+  "realIPhoneSafari": "Not tested",
+  "realNetworkWebRTC": "Not tested",
+  "physicalColourAccuracy": "Not tested",
+  "osProfileInstallation": "Not tested"
+}
