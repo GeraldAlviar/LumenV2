@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lumen 2.1 / A closer look at your monitor</title>
+<meta name="description" content="Experimental monitor checks with iPhone Safari. Square alignment, four test depths, visible progress and recoverable sessions.">
+<link rel="stylesheet" href="css/app.css?v=2.1.0">
+</head>
+<body>
+<main class="wrap">
+  <header class="app-header"><span class="eyebrow">Lumen / experimental display measurement</span><span class="version">v2.1.0</span>
+    <h1 style="font-size:clamp(2rem,6vw,3.5rem);max-width:14ch;margin:18px 0">A closer look at your monitor.</h1>
+    <p class="dim" style="max-width:65ch;margin-bottom:24px">Choose a test. Match the squares. Keep your iPhone still. Follow the progress on both screens, then review the readings and their limitations.</p>
+  </header>
+  <div class="role-pick" style="margin-bottom:18px">
+    <a href="desktop.html?v=2.1.0"><strong>Open on your monitor</strong><span class="dim small">Display patches, pairing code and full report</span></a>
+    <a href="phone.html?v=2.1.0"><strong>Open on your iPhone</strong><span class="dim small">Use Safari for the camera and test controls</span></a>
+  </div>
+  <p class="small" style="margin-bottom:24px"><a href="desktop.html?demo=1&amp;v=2.1.0">Explore a simulated report</a><span class="dim"> &middot; No camera needed. Demo data cannot generate correction files.</span></p>
+  <section class="card">
+    <span class="eyebrow">Your time. Your level of detail.</span>
+    <div class="table-scroll"><table><thead><tr><th>Test</th><th>Estimate</th><th>What changes</th></tr></thead><tbody>
+      <tr><td>Quick Check</td><td>~45 sec</td><td class="dim">11 grey levels, reference ladder and stray-light checks</td></tr>
+      <tr><td>Standard Test <span class="pill estimate">Recommended</span></td><td>~2&ndash;3 min</td><td class="dim">21 grey levels, colour response and temporal variation</td></tr>
+      <tr><td>Detailed Test</td><td>~4&ndash;5 min</td><td class="dim">41 grey levels, extra colour samples and central-area uniformity</td></tr>
+      <tr><td>Full Test</td><td>~7&ndash;10 min</td><td class="dim">81 grey levels, separated repeat checks and longer sampling</td></tr>
+    </tbody></table></div>
+    <p class="small dim" style="margin-top:14px">Estimates exclude setup, pauses and retries; they have not been benchmarked on your iPhone. Remaining time adapts to completed steps. A stand or stable support is recommended for every mode.</p>
+  </section>
+  <section class="card warning-panel">
+    <span class="eyebrow">A useful experiment. Not a certified calibration.</span>
+    <p class="small" style="margin-top:12px">Lumen checks relative camera response, not absolute brightness, white point, gamut coverage or calibrated colour accuracy. A quality rating describes observed repeatability, not physical accuracy. Use a suitable measurement instrument for colour-critical work.</p>
+    <p class="small dim" style="margin-top:10px">ICC/CAL downloads require complete clean readings and camera-confirmed exposure and white-balance locks. Safari may not expose those controls, so diagnostics can be available while correction exports remain blocked.</p>
+  </section>
+  <section class="card">
+    <span class="eyebrow">From pairing to a report</span>
+    <ol class="steps">
+      <li>Open the monitor page over HTTPS. Use your final monitor settings. Disable HDR, adaptive brightness and colour-shifting modes. Enter fullscreen before alignment.</li>
+      <li>Open the pairing link in iPhone Safari, scan the QR code or enter the five-character code. Both pages must show v2.1.0.</li>
+      <li>Choose your target and test depth. Start the rear camera and rest the phone on a support.</li>
+      <li>Match the monitor square with the dashed phone guide. Both sampling dots must sit inside the two patches. Automatic guidance helps; imperfect alignment does not block Lock.</li>
+      <li>Tap Lock sampling &amp; check exposure. Resolve clipping before starting. Camera lock limitations are reported honestly.</li>
+      <li>Run the test. The monitor square and markers stay in place while the patches change. Keep the phone still and both pages visible.</li>
+      <li>Review the complete report. Unavailable sections say Not measured. Save JSON for a portable session, CSV for raw readings or HTML for a readable report.</li>
+    </ol>
+  </section>
+  <section class="card">
+    <span class="eyebrow">Recovery, not a silent spinner</span>
+    <p class="small dim" style="margin-top:12px">A failed sample retries twice, then pauses with a reason on both screens. Marker-detected movement also pauses the test. Manual alignment cannot provide automatic movement protection.</p>
+    <p class="small dim" style="margin-top:10px">Completed readings are checkpointed on both devices. Resume requires realignment, a camera reference recheck and confirmation that monitor settings are unchanged. Browser storage is not a backup: export JSON before closing an important session.</p>
+  </section>
+  <section class="card">
+    <span class="eyebrow">Data stays local to your session</span>
+    <p class="small dim" style="margin-top:12px">Camera images are processed on the iPhone and are not sent to the monitor or saved in session files. Numerical readings and control messages go to the paired monitor. IndexedDB stores checkpoints, with a localStorage fallback. No account or cookies are required.</p>
+    <p class="small dim" style="margin-top:10px">Pairing uses PeerJS, public signalling and WebRTC. PeerJS and the QR library load from public CDNs, so an internet connection is required. Share the pairing code only with the phone you intend to connect.</p>
+  </section>
+  <p class="small dim" style="text-align:center;margin:24px 0">Static pages. No build step. Read the measurement quality notes before acting on any result.</p>
+</main>
+</body>
+</html>

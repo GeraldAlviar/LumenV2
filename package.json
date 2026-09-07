@@ -1,0 +1,17 @@
+{
+  "name": "lumen-monitor-check",
+  "version": "2.1.0",
+  "private": true,
+  "type": "module",
+  "description": "Experimental browser-based monitor checks using a phone camera",
+  "scripts": {
+    "test": "node --test tests/*.test.js",
+    "check": "node scripts/check.mjs",
+    "serve": "node scripts/serve.mjs",
+    "test:dom": "python tests/dom_smoke.py",
+    "test:icc": "python tests/icc_smoke.py"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}

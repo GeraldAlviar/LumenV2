@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lumen / iPhone sensor</title>
+<link rel="stylesheet" href="css/app.css?v=2.1.0">
+<script src="js/boot.js?v=2.1.0" defer></script>
+</head>
+<body class="phone-page">
+<noscript><p class="card">JavaScript is required to use the camera and pair the monitor.</p></noscript>
+<main class="wrap phone-wrap">
+  <header class="app-header row between">
+    <div><a class="brand" href="index.html">LUMEN</a><span class="version" data-version>v2.1.0</span><h1>Your iPhone. A closer look.</h1></div>
+    <button class="mode-toggle" data-ui-toggle aria-pressed="false" title="Switch Beginner / Advanced view">Beginner</button>
+  </header>
+  <p class="compatibility small hidden" id="compatibility"></p>
+  <section class="card status-card" id="status-card">
+    <div class="row between"><span class="eyebrow" id="stage-name">01 / Connect</span><span class="connection-chip" id="connection-chip">Not paired</span></div>
+    <h2 id="status" role="status" aria-live="polite">Connect to your monitor.</h2>
+    <p class="small dim" id="status-detail">Open Lumen on the monitor and enter its five-character code.</p>
+    <div class="bar" id="progress" role="progressbar" aria-label="Test progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="prog" style="width:0"></i></div>
+    <div class="row between small mono progress-caption"><span id="progress-label">Not started</span><span id="eta">Estimate shown before testing</span></div>
+    <div class="row wrap-row hidden" id="running-controls"><button id="pause">Pause</button><button id="cancel" class="danger">Stop test</button></div>
+  </section>
+  <section id="pair" class="card"><form id="pair-form">
+    <label class="field"><span>Monitor code</span><input type="text" id="room-input" maxlength="5" minlength="5" autocapitalize="characters" autocomplete="off" spellcheck="false" placeholder="ACDEG" required aria-label="Five-character monitor code"></label>
+    <button id="join" type="submit" class="primary wide">Connect to monitor</button>
+  </form></section>
+  <section class="card hidden" id="recovery-card">
+    <span class="eyebrow">Your saved test</span><h2 id="recovery-title">Pick up where you left off.</h2>
+    <p class="small dim" id="recovery-detail"></p>
+    <div class="stack"><button id="restore-phone" class="primary">Restore saved test</button><button id="import-phone">Open session JSON</button><button id="clear-phone" class="ghost">Clear this phone's saved data</button></div>
+  </section>
+  <section id="console" class="hidden">
+    <section class="card warning-panel hidden" id="pause-card">
+      <span class="eyebrow">Test paused / progress kept</span><h2 id="pause-title">Realign before continuing.</h2>
+      <p class="small" id="pause-reason"></p>
+      <label class="acknowledgement"><input type="checkbox" id="same-settings"><span>This is the same monitor and I have not changed its brightness, contrast, colour or gamma settings.</span></label>
+      <div class="stack"><button id="realign-resume">Realign &amp; check camera</button><button id="resume" class="primary" disabled>Resume saved test</button><button id="skip-optional" class="hidden">Skip optional diagnostic</button><button id="finish-partial">Finish with partial results</button></div>
+    </section>
+    <section class="card" id="test-options">
+      <span class="eyebrow">02 / Choose your check</span>
+      <label class="field"><span>Target</span><select id="target" aria-describedby="target-help"></select></label>
+      <p class="small dim" id="target-help">Presets select a transfer curve, not a measured white point.</p>
+      <fieldset class="test-modes" id="run-type"><legend>How much detail?</legend></fieldset>
+      <p class="small dim" id="run-description"></p>
+      <p class="small dim estimate-disclaimer">Times are estimates, excluding setup, pauses and retries. Full Test is experimental, not a certified calibration.</p>
+    </section>
+    <section class="card" id="camera-setup">
+      <span class="eyebrow">03 / Prepare your camera</span><h2>Rest the phone on a support.</h2>
+      <p class="small dim">Use iPhone Safari. Dim your phone screen. On the monitor, use your final brightness and turn off HDR, automatic brightness, Night Shift and dynamic contrast. Keep both pages visible.</p>
+      <button id="start-camera" class="primary wide">Start camera</button>
+    </section>
+    <section class="card preview-card hidden" id="align">
+      <div class="row between preview-caption"><span class="eyebrow">04 / Match the squares</span><span class="pill estimate" id="alignment-grade">Looking for markers</span></div>
+      <div class="viewport" id="camera-viewport">
+        <video id="cam" playsinline autoplay muted aria-label="Live rear-camera preview"></video>
+        <svg id="guide-overlay" viewBox="0 0 1000 1000" preserveAspectRatio="none" aria-hidden="true">
+          <polygon id="target-square" class="target-square" points="0,0 0,0 0,0 0,0"></polygon>
+          <polygon id="detected-square" class="detected-square hidden" points="0,0 0,0 0,0 0,0"></polygon>
+          <ellipse id="anchor-dot" class="sample-dot" cx="280" cy="500" rx="15" ry="15"></ellipse>
+          <ellipse id="test-dot" class="sample-dot" cx="720" cy="500" rx="15" ry="15"></ellipse>
+        </svg>
+        <span class="preview-lock" id="lock-indicator">Align the square</span>
+      </div>
+      <canvas id="sampler" class="hidden"></canvas>
+      <div class="align-controls">
+        <p id="align-hint" class="small">Fit the monitor square inside the dashed guide. Both sample dots must sit inside the two patches.</p>
+        <p class="small dim" id="movement-info">Movement detection is available when all four corner markers are visible.</p>
+        <button id="lock-sampling" class="primary wide">Lock sampling &amp; check exposure</button>
+        <div class="row wrap-row"><button id="show-alignment">Show square / realign</button><button id="stop-camera" class="ghost">Stop camera</button></div>
+      </div>
+    </section>
+    <section class="card" id="ready-card">
+      <span class="eyebrow">05 / Test</span>
+      <p class="small" id="ready-message">Match the square, then lock sampling. Camera checks run before testing.</p>
+      <button id="run" class="primary wide" disabled>Run Standard Test</button>
+    </section>
+
+    <section class="card hidden" id="phone-result">
+      <span class="eyebrow">Your results</span><h2 id="phone-quality">Measurement quality</h2><p class="small dim" id="phone-summary"></p>
+      <div id="phone-metrics" class="phone-metrics"></div>
+      <div class="stack"><a class="button primary" id="open-full-report" href="desktop.html?saved=phone">Open full report on this iPhone</a><button id="save-phone-session">Save session JSON</button><button id="save-phone-csv">Save raw measurements CSV</button><button id="save-phone-report">Save report HTML</button><button id="new-test">Start a new test</button></div>
+    </section>
+    <details class="card technical-details" data-technical-details id="camera-details">
+      <summary>Camera &amp; connection details</summary>
+      <dl class="technical-grid"><dt>Camera-reported locks</dt><dd id="cam-caps">Not checked</dd><dt>Live clipping</dt><dd id="live-quality">Not sampled</dd><dt>RGB ratio</dt><dd id="live-ratio">Not sampled</dd><dt>Camera frame age</dt><dd id="frame-age">No frame</dd><dt>Saving</dt><dd id="storage-status">Local storage not yet used</dd><dt>Protocol</dt><dd id="protocol-status">Waiting for monitor</dd></dl>
+      <p class="small dim">Automatic exposure and local tone mapping do not reliably cancel in camera ratios. Stable samples do not establish physical accuracy.</p>
+      <h3>Activity log</h3><ol class="activity-log" id="activity-log"></ol>
+    </details>
+    <div class="row wrap-row footer-actions"><button id="import-session">Import session JSON</button><button id="disconnect" class="ghost">Disconnect</button></div>
+  </section>
+  <input type="file" class="hidden" id="phone-session-file" accept=".json,application/json" aria-label="Import a saved session">
+  <p class="privacy-note small dim">Camera frames stay on your phone. Numerical results are sent to the paired monitor and saved locally when storage permits. Export JSON for a durable copy; browser storage can be cleared. No account or cookies.</p>
+</main>
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script type="module" src="js/phone.js?v=2.1.0"></script>
+</body>
+</html>
