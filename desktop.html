@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Lumen 2.1 — monitor</title>
+<link rel="stylesheet" href="css/app.css?v=2.1.0">
+
+</head>
+<body class="desktop-page">
+
+<div id="stage" aria-label="Monitor measurement stage">
+  <div id="surround"></div>
+  <header id="stage-hud">
+    <div><span class="eyebrow">Lumen / v2.1.0</span><strong id="stage-phase">Align the square</strong><p id="stage-status" role="status" aria-live="polite">Match the square on your iPhone, then lock sampling.</p></div>
+    <div class="hud-progress"><span id="stage-count">Ready</span><span id="stage-eta"></span><button id="stage-back" class="ghost hidden">Back to pairing</button><button id="stage-stop" class="danger">Stop / Esc</button></div>
+  </header>
+  <div id="calibration-board">
+    <div class="patch" id="patch-anchor"></div><div class="patch" id="patch-test"></div>
+    <div id="patch-field" class="hidden"></div>
+    <i class="corner-marker tl"></i><i class="corner-marker tr"></i><i class="corner-marker br"></i><i class="corner-marker bl"></i>
+    <p id="alignment-instruction">MATCH THIS SQUARE<br><small>Then keep the iPhone still</small></p>
+  </div>
+  <div class="stage-bottom"><span id="stage-room" class="mono"></span><br><span id="stage-storage">Camera images stay on the phone.</span><div class="bar"><i id="stage-bar"></i></div></div>
+</div>
+
+<noscript><p class="card">JavaScript is required for the display and report.</p></noscript>
+<main class="wrap wide" id="ui">
+
+  <div class="row between" style="margin-bottom:18px">
+    <div>
+      <span class="eyebrow">Lumen — monitor</span>
+      <h1>Display under test <small class="build-label">v2.1.0</small></h1>
+    </div>
+    <div class="row"><label class="switch-label"><input type="checkbox" id="advanced"> Advanced</label><button id="go-fullscreen" class="ghost">Fullscreen</button></div>
+  </div>
+
+  <p class="status" id="status" role="status" aria-live="polite">Starting…</p>
+
+  <!-- Pairing -->
+  <section id="pair-panel" class="card">
+    <span class="eyebrow">Pair your phone</span>
+    <div class="qr" id="qr" style="margin:14px auto"></div>
+    <div class="code" id="room-code" aria-label="Pairing code">·····</div>
+    <p class="small dim" style="text-align:center;margin-top:10px">
+      Point your phone camera at the code, or open
+      <span class="mono" id="pair-url"></span> and type the five characters.
+    </p>
+    <div class="row pairing-actions">
+      <button id="copy-link">Copy pairing link</button>
+      <button id="retry-host" class="ghost">New pairing code / retry</button>
+    </div>
+    <p class="small dim" style="margin-top:10px">Only one phone can connect at a time. Share the code only with the phone you intend to use.</p>
+  </section>
+
+  <section class="card" id="session-tools">
+    <div class="row between wrap-row">
+      <div><span class="eyebrow">Session library</span><p class="small dim">Open a saved measurement or explore the interface without a camera.</p></div>
+      <div class="row wrap-row">
+        <button id="open-session">Open JSON</button>
+        <button id="restore-session" class="hidden">Restore last session</button>
+        <button id="demo-session" class="ghost">View demo</button>
+        <button id="clear-saved" class="ghost hidden">Clear saved data</button>
+        <input type="file" id="session-file" accept="application/json,.json" class="hidden" aria-label="Open a Lumen JSON session">
+      </div>
+    </div>
+  </section>
+
+  <!-- Live -->
+  <section id="live-panel" class="hidden">
+    <div class="card">
+      <span class="eyebrow">Session</span>
+      <div class="row between">
+        <span class="small dim">Target</span>
+        <span class="mono" id="target-name">Gamma 2.2</span>
+      </div>
+      <div class="bar" style="margin-top:12px"><i id="prog-bar" style="width:0"></i></div>
+      <p class="small dim mono" id="prog-label" style="margin-top:6px">Idle</p>
+    </div>
+
+    <!-- The null bridge -->
+    <div class="card hidden" id="bridge">
+      <span class="eyebrow">Relative channel drift</span>
+      <p class="small dim" style="margin-bottom:12px">
+        Compares 80% grey with 50% grey. The ratios show relative channel drift,
+        not absolute white balance. A uniform monitor RGB gain cancels from both
+        patches, so these needles cannot guide D65 or D50 gain calibration.
+        Live values are also shown on the phone while the display paints patches.
+      </p>
+      <div class="bridge">
+        <div class="bridge-scale">
+          <div class="bridge-axis"></div>
+          <div class="bridge-tick" style="left:25%"></div>
+          <div class="bridge-tick" style="left:75%"></div>
+          <div class="bridge-track" style="top:10px">
+            <span class="bridge-label">RED</span>
+            <div class="needle r" id="needle-r" data-v="0.0%" style="left:50%"></div>
+          </div>
+          <div class="bridge-track" style="top:48px">
+            <span class="bridge-label">GRN</span>
+            <div class="needle g" id="needle-g" data-v="0.0%" style="left:50%"></div>
+          </div>
+          <div class="bridge-track" style="top:86px">
+            <span class="bridge-label">BLU</span>
+            <div class="needle b" id="needle-b" data-v="0.0%" style="left:50%"></div>
+          </div>
+        </div>
+        <div class="bridge-legend">
+          <span>−6%</span><span>−3%</span><span>NULL</span><span>+3%</span><span>+6%</span>
+        </div>
+        <div class="verdict" id="bridge-verdict">—</div>
+      </div>
+      <hr>
+      <span class="eyebrow">Interpretation</span>
+      <p class="small dim" id="gain-advice" style="margin-top:8px">Use this comparison to inspect tracking between two grey levels, not to set an absolute white point.</p>
+      <p class="small dim mono" id="bridge-stability" style="margin-top:10px"></p>
+    </div>
+  </section>
+
+  <!-- Report -->
+  <section id="report" class="hidden">
+    <div class="card report-heading">
+      <span class="eyebrow" id="report-label">Experimental measurement</span>
+      <h2 id="report-title">Measurement report</h2>
+      <p class="small dim" id="report-summary" style="margin-top:8px"></p>
+    </div>
+    <div class="card warning-panel" id="quality-panel">
+      <span class="eyebrow">Data quality &amp; limitations</span><p class="quality-grade">Measurement quality: <strong id="measurement-grade">-</strong></p>
+      <p class="small" id="quality-summary"></p>
+      <ul class="quality-list small" id="quality-warnings"></ul>
+      <details id="quality-details" class="hidden"><summary>Readings that need attention</summary><ul id="quality-issues" class="quality-list small"></ul></details>
+      <p class="small dim" style="margin-top:10px">Stable camera readings do not establish physical accuracy. Tone mapping, spectral response, display processing and browser colour management remain sources of error.</p>
+    </div>
+    <div class="card"><span class="eyebrow">Complete report / measured and not measured</span><div id="report-coverage" class="coverage-grid"></div></div>
+    <div class="card"><span class="eyebrow">Recommended next steps</span><div id="report-advice" class="small"></div></div>
+    <div class="card advanced-only">
+      <span class="eyebrow">Scorecard</span>
+      <div class="table-scroll"><table>
+        <thead><tr><th>Metric</th><th>Reading</th><th>Status</th><th>Note</th></tr></thead>
+        <tbody id="score-body"></tbody>
+      </table></div>
+    </div>
+
+    <div class="card advanced-only" id="eotf-card"><span class="eyebrow">Luminance tracking</span><div id="chart-eotf"></div></div>
+    <div class="card advanced-only" id="balance-card"><span class="eyebrow">Channel drift</span><div id="chart-balance"></div></div>
+
+    <div class="card">
+      <span class="eyebrow">Uniformity</span>
+      <div class="heatmap" id="heatmap" style="margin:12px 0"></div>
+      <p class="small dim" id="uniformity-note">Run the uniformity check from your phone to populate this.</p>
+    </div>
+
+    <div class="card">
+      <span class="eyebrow">Take the correction with you</span>
+      <p class="small dim" style="margin-bottom:12px">
+        Corrections are experimental. ICC files assume sRGB primaries, not measured
+        monitor primaries, and are unsuitable as a wide-gamut or print-proof profile.
+        Save your current profile first and restore it if the result worsens the image.
+        The operating system needs a compatible calibration loader for vcgt curves.
+      </p>
+      <label class="acknowledgement"><input type="checkbox" id="accept-experimental">
+        <span>I understand the camera limitations and assumed sRGB primaries.</span></label>
+      <p class="small dim" id="export-note" style="margin:10px 0"></p>
+      <div class="stack">
+        <button id="dl-icc" class="primary wide" disabled>Download ICC profile</button>
+        <button id="dl-cal" class="wide" disabled>Download ArgyllCMS .cal</button>
+        <button id="dl-csv" class="wide">Download measurements CSV</button>
+        <button id="dl-json" class="wide">Save session JSON</button><button id="dl-log" class="wide">Save diagnostic log</button><button id="print-report" class="wide">Print report</button>
+        <button id="restart" class="ghost wide">Measure again</button>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrious/4.0.2/qrious.min.js"></script>
+<script type="module" src="js/desktop.js?v=2.1.0"></script>
+</body>
+</html>
