@@ -1,0 +1,122 @@
+{
+  "build": "2.2.0",
+  "algorithm": "SHA-256",
+  "files": [
+    {
+      "path": "css/app.css",
+      "sha256": "899cc63a8b49260addd28147a8b17c203013536d2ce9a08733923dca7e19e58e"
+    },
+    {
+      "path": "desktop.html",
+      "sha256": "8482dd4450b3bdd2ea6fd44a9fe8d96b1f367d0a56b8bf3ae7382e40b99b5625"
+    },
+    {
+      "path": "index.html",
+      "sha256": "ed388dde0965628584db349283738612e482a5a233c6ecb4ddf2df1a0510ef3d"
+    },
+    {
+      "path": "js/alignment.js",
+      "sha256": "dbe96e393c1d8d612896fc3d3e0e4d13d014caf9e2068ab060af72503ba58fdb"
+    },
+    {
+      "path": "js/analysis.js",
+      "sha256": "eae644687dd719a7d62b8c594628d8d2cd143d88ba65dc74da4f920750568053"
+    },
+    {
+      "path": "js/async.js",
+      "sha256": "668063de8556ea9e56a716df9cb1f2f5e51c577f3fecb3778b607be644c3ff06"
+    },
+    {
+      "path": "js/boot.js",
+      "sha256": "abc427d65318a0cd97745e256821abef120e5fd27f5ecb2b4c9b79c8c2cb1e54"
+    },
+    {
+      "path": "js/capture.js",
+      "sha256": "6d60ac1196ebf36149c1fd6bbdaeae0b967b74a5bf0a23d99178b4e02f0f7b1c"
+    },
+    {
+      "path": "js/colour.js",
+      "sha256": "d2949fae176ec96cfd3b292540dd4863c39ddb35a9eca97dccbbe0e269a0e9cb"
+    },
+    {
+      "path": "js/config.js",
+      "sha256": "3e70080d90702064f918c6700103f82ac233d5586e8e306b9904c516f7fb0027"
+    },
+    {
+      "path": "js/demo.js",
+      "sha256": "3a2098e6e8b2b6579009fc57ce82c3216dae766d2209816d1670a0867d250f4d"
+    },
+    {
+      "path": "js/desktop.js",
+      "sha256": "a15eccb31c0a694442569c8f6761d371f4d5bfcb2d8e2da7007b363d78e2910e"
+    },
+    {
+      "path": "js/display.js",
+      "sha256": "4cf884834f45f99eabe8a2e10c963cff5194a8075a9c00d4c9327ea53d4435a4"
+    },
+    {
+      "path": "js/icc.js",
+      "sha256": "eafcfb671560848b4ae99bd4f3e076b58ed4e47b9f0f4dc8b423342fdd13c42e"
+    },
+    {
+      "path": "js/modes.js",
+      "sha256": "b40f86acffe096a833935d20fdc99793005c90496aac5b2b3f86a78a286fd8ca"
+    },
+    {
+      "path": "js/motion.js",
+      "sha256": "56c6edd10b2adb70abc223d1fb352437377dae23f6f39cc127bcac8653252bc0"
+    },
+    {
+      "path": "js/net.js",
+      "sha256": "022c27a33a1778e389018c1845b68d61e2b63347f3c1cfaf9ffb5501b073b1b1"
+    },
+    {
+      "path": "js/patches.js",
+      "sha256": "7365e3371c02c5e4b228e71f232c246367685efe874d8c24d31028bc6b052e8a"
+    },
+    {
+      "path": "js/phone.js",
+      "sha256": "2c63372474b00c226bba8d527c3ce6de99fc200c42b59b99baf4ec3c738d3855"
+    },
+    {
+      "path": "js/quality.js",
+      "sha256": "968bd565f39430e5f03f1a4934a8506cb26366658f280d3d6cfccc8e80fec7a7"
+    },
+    {
+      "path": "js/report.js",
+      "sha256": "933bc56c1fe8c225c7a27cc7f07a0c4116db6f7f5114324bd74ea08ef726a911"
+    },
+    {
+      "path": "js/runner.js",
+      "sha256": "a27e87edaaf86a89275b924336369fcbf1423374bbb8e0b5c82b60a2c7814c60"
+    },
+    {
+      "path": "js/sensor.js",
+      "sha256": "ed079015b53249ba43e11333292381b3826e3a75106f484feee9f5e70c01284b"
+    },
+    {
+      "path": "js/session.js",
+      "sha256": "313ac482e1249ae9c0a395b2a957027604ca0828b8f5eb762304045f7b0fea9a"
+    },
+    {
+      "path": "js/storage.js",
+      "sha256": "417523a3e36ff2d58376a06d26adae37863a3db1ba61d423801640f7e0f8613b"
+    },
+    {
+      "path": "js/tracking.js",
+      "sha256": "61c3ac56636156f635be027874c0ad369a238124379d822be5ec94422db3eb07"
+    },
+    {
+      "path": "js/validation.js",
+      "sha256": "b3973d210164d69f2c1f9c75a8e9893d670cb4f3db4b16234fad5100ba8cd1c0"
+    },
+    {
+      "path": "js/verification.js",
+      "sha256": "3f28706850cba129fd7e23bb9e6bb1e16e21c6a5808fd901f232a8c5b0ac63e7"
+    },
+    {
+      "path": "phone.html",
+      "sha256": "fc28fff245ee8d36e09ab6cec8abd860b52b486a22cd91754ce3cc3b8eac61d7"
+    }
+  ]
+}
