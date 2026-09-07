@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lumen — sensor</title>
+<link rel="stylesheet" href="css/app.css">
+<style>
+  /* Kept dark on purpose. A bright phone screen 30 cm from the panel throws
+     light straight back onto the surface being measured. */
+  body { background: #060608; }
+</style>
+</head>
+<body>
+<noscript><p class="card">JavaScript is required to pair devices and sample the camera.</p></noscript>
+<main class="wrap">
+
+  <span class="eyebrow">Lumen — sensor</span>
+  <h1 style="margin:4px 0 14px">Camera head</h1>
+  <p class="status" id="status" role="status" aria-live="polite">Enter the code shown on your monitor.</p>
+
+  <!-- Pairing -->
+  <section id="pair" class="card"><form id="pair-form">
+    <label class="field">
+      <span>Room code</span>
+      <input type="text" id="room-input" maxlength="5" autocapitalize="characters"
+             autocomplete="off" spellcheck="false" placeholder="ACDEG" minlength="5" required aria-label="Five-character room code"
+             style="text-transform:uppercase;letter-spacing:.3em;text-align:center;font-size:1.4rem">
+    </label>
+    <button id="join" type="submit" class="primary wide">Connect to display</button></form>
+  </section>
+
+  <!-- Console -->
+  <section id="console" class="hidden">
+
+    <div class="card" id="camera-setup">
+      <span class="eyebrow">Camera</span>
+      <p class="small dim" style="margin-bottom:12px">
+        Disable HDR, Night Shift, dynamic contrast and automatic brightness on the
+        display under test. Dim the phone screen and rest it on a stable support.
+        Keep both pages visible while measuring.
+      </p>
+      <button id="start-camera" class="primary wide">Start camera</button>
+    </div>
+
+    <div class="card hidden" id="align">
+      <span class="eyebrow">Alignment</span>
+      <div class="viewport" id="camera-viewport" style="margin:10px 0">
+        <video id="cam" playsinline autoplay muted></video>
+        <div class="reticle-layer" id="reticles"></div>
+        <div id="screen-bounds" class="screen-bounds hidden" aria-label="Screen sampling boundary">
+          <button type="button" data-corner="tl" aria-label="Move top left screen corner with arrow keys"></button>
+          <button type="button" data-corner="br" aria-label="Move bottom right screen corner with arrow keys"></button>
+        </div>
+      </div>
+      <canvas id="sampler" class="hidden"></canvas>
+
+      <div class="readout" style="margin-bottom:10px">
+        <div><dt>Ratio r g b</dt><dd class="mono" id="live-ratio" style="font-size:.8rem">—</dd></div>
+        <div><dt>Lock</dt><dd class="mono" id="live-quality" style="font-size:.8rem">—</dd></div>
+      </div>
+      <p class="small dim" id="align-hint">Drag the two circles into the patches.</p>
+
+      <label class="field" style="margin-top:12px">
+        <span>Sample size</span>
+        <input type="range" id="reticle-size" min="35" max="130" value="75">
+      </label>
+      <div class="stack" style="margin-bottom:12px">
+        <button id="show-alignment">Show alignment patches</button>
+        <button id="lock-camera">Try locking current camera settings</button>
+        <button id="stop-camera" class="ghost">Stop camera</button>
+      </div>
+      <p class="small dim mono" id="cam-caps"></p>
+      <p class="small dim" id="cam-note" style="margin-top:6px"></p>
+    </div>
+
+    <div class="card">
+      <span class="eyebrow">Target</span>
+      <label class="field"><span>Transfer curve (not an absolute white point)</span><select id="target"></select></label>
+      <label class="field" style="margin-bottom:0"><span>Measurement run</span><select id="run-type"></select></label>
+    </div>
+
+    <div class="card">
+      <span class="eyebrow">Actions</span>
+      <div class="bar" id="progress" role="progressbar" aria-label="Measurement progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="0"><i id="prog" style="width:0"></i></div>
+      <p class="small dim mono" id="progress-label" style="margin:8px 0 12px">Ready</p>
+      <div class="stack">
+        <button id="tune" class="wide">Live relative grey balance</button>
+        <button id="run" class="primary wide">Run measurement</button>
+        <button id="uniformity" class="wide">Check uniformity</button>
+        <button id="flicker" class="wide">Check temporal modulation</button>
+        <button id="capture-uniformity" class="primary wide hidden">Capture uniformity</button>
+        <button id="cancel" class="danger wide hidden">Stop current test</button>
+        <button id="save-phone-session" class="ghost wide" disabled>Save session JSON</button>
+        <button id="disconnect" class="ghost wide">Disconnect</button>
+      </div>
+    </div>
+
+    <p class="small dim">
+      Review results on the monitor. Raw readings are saved in this browser for
+      recovery; save a JSON file before closing if you need a portable copy.
+      Camera images are not transmitted. A public service exchanges pairing metadata.
+      This is an experimental comparison tool, not a replacement for a colorimeter.
+    </p>
+
+  </section>
+
+</main>
+
+<script src="https://cdn.jsdelivr.net/npm/peerjs@1.5.4/dist/peerjs.min.js"></script>
+<script type="module" src="js/phone.js"></script>
+</body>
+</html>

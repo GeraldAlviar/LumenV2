@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en-GB">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Lumen | Experimental monitor checks with a phone camera</title>
+<meta name="description" content="Explore your monitor's relative greyscale response with a phone camera. Cancellable tests, quality checks, portable sessions and clearly labelled experimental corrections.">
+<link rel="stylesheet" href="css/app.css">
+</head>
+<body>
+<main class="wrap">
+  <span class="eyebrow">Lumen / Experimental screen measurement</span>
+  <h1 style="margin:6px 0 12px">A closer look at<br>your monitor.</h1>
+  <p class="dim" style="margin-bottom:22px">Use a phone camera to explore relative greyscale response, channel drift and screen uniformity. Save the readings, inspect their quality and compare against a target curve. No account or app installation.</p>
+  <div class="role-pick" style="margin-bottom:16px">
+    <a href="desktop.html"><strong>Monitor</strong><span class="dim small">Open on the screen you want to check</span></a>
+    <a href="phone.html"><strong>Phone</strong><span class="dim small">Open on the device holding the camera</span></a>
+  </div>
+  <p class="small" style="margin-bottom:24px"><a href="desktop.html?demo=1">Explore a simulated report first</a> <span class="dim">No camera needed. Demo data cannot generate a correction.</span></p>
+
+  <div class="card warning-panel">
+    <span class="eyebrow">Know the limits</span>
+    <p class="small">A stable camera reading is not a calibrated measurement. Lumen cannot establish an absolute white point, brightness in cd/m<sup>2</sup>, gamut coverage or colour accuracy. Use a suitable measurement instrument for colour-critical work.</p>
+  </div>
+  <div class="card">
+    <span class="eyebrow">Get started</span>
+    <ol class="steps">
+      <li>Open the monitor page over HTTPS and enter fullscreen. Keep the display settings fixed; turn off HDR, dynamic contrast and adaptive brightness.</li>
+      <li>Scan the QR code, use the pairing link or enter the five-character code on the phone page.</li>
+      <li>Start the camera. Rest the phone on a support, frame both patches and drag each sample circle fully inside its matching patch.</li>
+      <li>Let the preview settle. Optionally try locking its current camera settings; the app reports what the browser actually confirms.</li>
+      <li>Choose a target and run. Keep both pages visible, then review the quality notes on the monitor. Stop a test at any time without losing completed readings.</li>
+    </ol>
+  </div>
+  <div class="card">
+    <span class="eyebrow">What you can explore</span>
+    <div class="table-scroll"><table><tbody>
+      <tr><td>Relative greyscale response</td><td class="dim">11 or 21 levels, plus reference readings</td></tr>
+      <tr><td>Channel drift</td><td class="dim">Relative comparison, not white-point tuning</td></tr>
+      <tr><td>Apparent contrast</td><td class="dim">Camera-dependent estimate; very dark blacks may be unresolved</td></tr>
+      <tr><td>Screen uniformity</td><td class="dim">25 zones inside a manually aligned rectangle</td></tr>
+      <tr><td>Temporal modulation</td><td class="dim">Variation visible to the camera, not a PWM-frequency test</td></tr>
+      <tr><td>Portable results</td><td class="dim">JSON sessions, raw CSV and gated experimental corrections</td></tr>
+    </tbody></table></div>
+  </div>
+  <div class="card">
+    <span class="eyebrow">Why two patches?</span>
+    <p class="small dim">A test patch is compared with a reference in the same camera frame. A shared multiplicative gain can cancel in that ratio. A ladder of reference levels reduces the brightness gap for darker patches.</p>
+    <p class="small dim" style="margin-top:10px">That model does not remove local tone mapping, unknown camera colour response, lens shading or browser colour management. Lumen checks sample stability, clipping and reference completeness, but passing those checks cannot prove physical accuracy.</p>
+  </div>
+  <div class="card">
+    <span class="eyebrow">Your sessions, under your control</span>
+    <p class="small dim">Camera frames are processed on the phone; only numerical readings and control messages are sent to the paired display. The last measurement is saved in browser storage when available. Export JSON for a portable copy and use Clear saved data on the monitor to remove its browser copy.</p>
+    <p class="small dim" style="margin-top:10px">The app loads PeerJS and a QR library from public CDNs, and pairing uses a public signalling service. It is not an offline or zero-network tool. Share the pairing code only with the phone you intend to use.</p>
+  </div>
+  <p class="small dim" style="text-align:center;margin-top:20px">Static pages. No build step. Experimental by design.</p>
+</main>
+</body>
+</html>
